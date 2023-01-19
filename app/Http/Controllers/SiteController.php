@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-
+use App\Models\Product;
 class SiteController extends Controller
 {
     public function landingPage(){
@@ -14,5 +14,12 @@ class SiteController extends Controller
     }
     public function faqPage(){
         return view("faq");
+    }
+    public function products(){
+        //echo '<pre>';
+        return $products=Product::all();
+        //print_r($products);
+        //echo '</pre>';
+        //return 'products'; 
     }
 }
