@@ -1,7 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-
+use App\Http\Controllers\SiteController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -13,9 +13,9 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
+/*Route::get('/', function () {
     return view('welcome');
-});
+});*/
 
 Route::get('/welcome', function () {
     return "Hi";
@@ -24,3 +24,7 @@ Route::get('/welcome', function () {
 Route::get('/welcome/{user}/{id}', function ($user,$id) {
     return "Hi ".$user.' '.$id;
 });
+
+Route::get('/contact', [SiteController::class,'contactPage']);
+Route::get('/faq', [SiteController::class,'faqPage']);
+Route::get('/', [SiteController::class,'landingPage']);
