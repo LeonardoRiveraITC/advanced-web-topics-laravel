@@ -25,8 +25,10 @@ Route::get('/welcome/{user}/{id}', function ($user,$id) {
     return "Hi ".$user.' '.$id;
 });
 
-
+Route::get('/shop', [SiteController::class,'shop']);
 Route::get('/products', [SiteController::class,'products'])->name('products');
+Route::get('/details/{id}', [SiteController::class,'details'])->name('details');
 Route::get('/contact', [SiteController::class,'contactPage']);
 Route::get('/faq', [SiteController::class,'faqPage']);
 Route::get('/', [SiteController::class,'landingPage']);
+
