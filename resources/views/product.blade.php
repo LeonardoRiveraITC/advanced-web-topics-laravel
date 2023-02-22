@@ -86,6 +86,54 @@
                 </div>
             </div>
         </div>
+        <h3 class="title font-weight-normal mt-0 text-left">Comments</h3>
+            @foreach($products->relatedComments as $comment)
+            <ul>
+                <li>
+                    <p>{{$comment->fullname}} Dice:</p>
+                    <p>{{$comment->message}}</p>
+                </li>
+            </ul>
+            @endforeach
+        <h3 class="title font-weight-normal mt-0 text-left">Send Us a Comment</h3>
+                                @if(session()->get('success'))
+                                        <div class="alert alert-success text-center">
+                                        {{ session()->get('success') }}
+                                        </div>
+                                        @endif
+                                        @if ($errors->any())
+                                        <div class="alert alert-danger">
+                                        <ul>
+                                        @foreach ($errors->all() as $error)
+                                        <li>{{ $error }}</li>
+                                        @endforeach
+                                        </ul>
+                                        </div>
+                                        @endif
+                                <form data-aos="fade-left" data-aos-duration="1200" action="{{route('comment.store')}}" method="POST">
+                                    @csrf
+                                    <div class="row">
+                                        <div class="col-lg-6">
+                                            <div class="form-group">
+                                                <input class="form-control" type="text" placeholder="Full Name" name="fullname" value="{{old('name')}}">
+                                            </div>
+                                        </div>
+                                        <div class="col-lg-6">
+                                            <div class="form-group">
+                                                <input class="form-control" type="email" placeholder="Email" name="email" value="{{old('email')}}">
+                                            </div>
+                                        </div>
+                                        <div class="col-lg-12">
+                                            <div class="form-group">
+                                                <textarea class="form-control" rows="3" placeholder="Message" name="message" value="{{old('message')}}"></textarea>
+                                            </div>
+                                        </div>
+                                        <div class="col-lg-12 text-right">
+                                            <button type="submit" class="btn btn-lg btn-primary mb-5">Send</button>
+                                        </div>
+                                    </div>
+                                </form>
+                            </div>
 
         <section id="related-product">
             <div class="container">

@@ -3,7 +3,6 @@
 namespace Database\Seeders;
 
 use Illuminate\Database\Seeder;
-
 class DatabaseSeeder extends Seeder
 {
     /**
@@ -16,7 +15,8 @@ class DatabaseSeeder extends Seeder
         
         $this->call([
             CategoriesSeeder::class,
-            ProductsSeeder::class
+            ProductsSeeder::class,
+            CommentsSeeder::class
         ]);
         // \App\Models\User::factory(10)->create();
     }

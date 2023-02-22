@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\SiteController;
+use App\Http\Controllers\ContactController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -25,10 +26,11 @@ Route::get('/welcome/{user}/{id}', function ($user,$id) {
     return "Hi ".$user.' '.$id;
 });
 
-Route::get('/shop', [SiteController::class,'shop']);
+Route::get('/shop', [SiteController::class,'shop'])->name('shop');
 Route::get('/products', [SiteController::class,'products'])->name('products');
 Route::get('/details/{id}', [SiteController::class,'details'])->name('details');
-Route::get('/contact', [SiteController::class,'contactPage']);
+Route::resource('contact', ContactController::class);
+Route::resource('comment', CommentController::class);
 Route::get('/faq', [SiteController::class,'faqPage']);
 Route::get('/', [SiteController::class,'landingPage']);
 

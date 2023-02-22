@@ -37,7 +37,10 @@
                     <!-- Navbar Menu -->
                     <ul class="navbar-nav ml-auto">
                         <li class="nav-item">
-                            <a href="shop.html" class="nav-link">Shop</a>
+                            <a href="{{ route('contact.index') }}" class="nav-link">Contact</a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="{{route('shop')}}" class="nav-link">Shop</a>
                         </li>
                         <li class="nav-item">
                             <a href="register.html" class="nav-link">Register</a>

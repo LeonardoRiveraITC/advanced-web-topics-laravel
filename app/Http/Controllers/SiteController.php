@@ -8,8 +8,8 @@ use App\Models\Category;
 class SiteController extends Controller
 {
     public function details($id){
-        $products=Product::find($id);
-        return view('product',compact('products'));
+        $products=Product::with('relatedComments')->where('id', $id)->get();
+        return view('product',['products'=>$products[0]]);
     }
     public function shop(){
         $products=Category::with('relatedProducts')->get();

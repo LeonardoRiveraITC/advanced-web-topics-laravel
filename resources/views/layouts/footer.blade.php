@@ -12,7 +12,7 @@
                             <a href="about.html">About</a>
                         </li>
                         <li>
-                            <a href="contact.html">Contact Us</a>
+                            <a href="{{route('contact.index')}}">Contact Us</a>
                         </li>
                         <li>
                             <a href="faq.html">FAQ</a>
