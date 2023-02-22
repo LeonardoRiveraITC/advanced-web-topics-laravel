@@ -1,0 +1,2 @@
+Nuevo Correo
+{{$data->mess}}

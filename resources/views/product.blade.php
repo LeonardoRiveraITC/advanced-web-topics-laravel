@@ -87,14 +87,14 @@
             </div>
         </div>
         <h3 class="title font-weight-normal mt-0 text-left">Comments</h3>
-            @foreach($products->relatedComments as $comment)
-            <ul>
-                <li>
-                    <p>{{$comment->fullname}} Dice:</p>
-                    <p>{{$comment->message}}</p>
-                </li>
-            </ul>
-            @endforeach
+        @foreach($products->relatedComments as $comment)
+                <div class="card">
+                    <div class="card-body">
+                    <img src="{{asset('assets/img/default-user.png')}}" style="width: 5%;"alt=""> <h5 class="card-title">{{$comment->fullname}} Dice:</h5>
+                        <p class="card-text">{{$comment->message}}</p>
+                </div>
+            </div>
+            @endforeach    
         <h3 class="title font-weight-normal mt-0 text-left">Send Us a Comment</h3>
                                 @if(session()->get('success'))
                                         <div class="alert alert-success text-center">
@@ -116,6 +116,7 @@
                                         <div class="col-lg-6">
                                             <div class="form-group">
                                                 <input class="form-control" type="text" placeholder="Full Name" name="fullname" value="{{old('name')}}">
+                                                <input class="form-control" type="text" name="idProd" value="{{$products->id}}" style="display:none;">
                                             </div>
                                         </div>
                                         <div class="col-lg-6">

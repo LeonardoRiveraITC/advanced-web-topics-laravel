@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-
+use App\Models\Comment;
 class CommentController extends Controller
 {
     /**
@@ -49,8 +49,8 @@ class CommentController extends Controller
             $comment->message = $request->input('message');
             $comment->product_id = $request->input('idProd');
             $comment->save();
-            return redirect()->route('details/'.$request->input('idProd'))->with('success', 'You message has been sent.');
-    }
+            $id=$request->input('idProd');
+            return \Redirect::route('details', [$id])->with('success', 'Comentario enviado correctamente');    }
 
     /**
      * Display the specified resource.

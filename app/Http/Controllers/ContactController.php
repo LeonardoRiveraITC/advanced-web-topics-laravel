@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Contact;
+use Mail;
+use App\Mail\ContactSent;
 class ContactController extends Controller
 {
     /**
@@ -47,7 +49,10 @@ class ContactController extends Controller
             $contact->fullname = $request->input('fullname');
             $contact->email = $request->input('email');
             $contact->message = $request->input('message');
+            $data=new \stdClass();
+            $data->mess=$request->message;
             $contact->save();
+            Mail::to($request->input('email'))->send(new ContactSent($data));
             return redirect()->route('contact.index')->with('success', 'You message has been sent.');
     }
 

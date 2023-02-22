@@ -22,15 +22,17 @@ class CommentsSeeder extends Seeder
         DB::table('comments')->insert([
             'fullname' => 'Maria ',
             'email' => 'Maria@gmail.com',
-            'message' => 'Se que este no es el lugar ni el momento, pero quiero quemar a una robamaridos...',
+            'message' => 'Me llego todo golpeado el producto...',
+            'product_id' => '1',
+        ]);
+
+        DB::table('comments')->insert([
+            'fullname' => 'Maria ',
+            'email' => 'Maria@gmail.com',
+            'message' => 'Me llego todo golpeado el producto...',
             'product_id' => '2',
         ]);
-        DB::table('comments')->insert([
-            'fullname' => 'NotABot',
-            'email' => 'asdhjasd@rumail.ru',
-            'message' => 'Buy Bitcoin -> http://totallynotabitcoinscam.xyz',
-            'product_id' => '3',
-        ]);
+
         DB::table('comments')->insert([
             'fullname' => 'Pedro',
             'email' => 'Perdo@gmail.com',
@@ -40,15 +42,10 @@ class CommentsSeeder extends Seeder
         DB::table('comments')->insert([
             'fullname' => 'Maria ',
             'email' => 'Maria@gmail.com',
-            'message' => 'Se que este no es el lugar ni el momento, pero quiero quemar a una robamaridos...',
+            'message' => 'Me llego todo golpeado el producto...',
             'product_id' => '5',
         ]);
-        DB::table('comments')->insert([
-            'fullname' => 'NotABot',
-            'email' => 'asdhjasd@rumail.ru',
-            'message' => 'Buy Bitcoin -> http://totallynotabitcoinscam.xyz',
-            'product_id' => '6',
-        ]);
+
         DB::table('comments')->insert([
             'fullname' => 'Pedro',
             'email' => 'Perdo@gmail.com',
@@ -58,14 +55,8 @@ class CommentsSeeder extends Seeder
         DB::table('comments')->insert([
             'fullname' => 'Maria ',
             'email' => 'Maria@gmail.com',
-            'message' => 'Se que este no es el lugar ni el momento, pero quiero quemar a una robamaridos...',
+            'message' => 'Me llego todo golpeado el producto...',
             'product_id' => '8',
-        ]);
-        DB::table('comments')->insert([
-            'fullname' => 'NotABot',
-            'email' => 'asdhjasd@rumail.ru',
-            'message' => 'Buy Bitcoin -> http://totallynotabitcoinscam.xyz',
-            'product_id' => '9',
         ]);
     }
 }
