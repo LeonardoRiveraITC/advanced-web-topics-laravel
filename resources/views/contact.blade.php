@@ -1,4 +1,7 @@
 @extends('layouts.main')
+@section('head_meta')
+<meta name="csrf_token" content="{{ csrf_token() }}" />
+@endsection
 @section('content')
     <div id="page-content" class="page-content">
         <div class="banner">
@@ -35,26 +38,26 @@
                                         </ul>
                                         </div>
                                         @endif
-                                <form data-aos="fade-left" data-aos-duration="1200" action="{{route('contact.store')}}" method="POST">
+                                <form data-aos="fade-left" id="contactForm"data-aos-duration="1200" action="{{route('contact.store')}}" method="POST">
                                     @csrf
                                     <div class="row">
                                         <div class="col-lg-6">
                                             <div class="form-group">
-                                                <input class="form-control" type="text" placeholder="Full Name" name="fullname" value="{{old('name')}}">
+                                                <input id="fullName" class="form-control" type="text" placeholder="Full Name" name="fullname" value="{{old('name')}}">
                                             </div>
                                         </div>
                                         <div class="col-lg-6">
                                             <div class="form-group">
-                                                <input class="form-control" type="email" placeholder="Email" name="email" value="{{old('email')}}">
+                                                <input id="email" class="form-control" type="email" placeholder="Email" name="email" value="{{old('email')}}">
                                             </div>
                                         </div>
                                         <div class="col-lg-12">
                                             <div class="form-group">
-                                                <textarea class="form-control" rows="3" placeholder="Message" name="message" value="{{old('message')}}"></textarea>
+                                                <textarea id="message" class="form-control" rows="3" placeholder="Message" name="message" value="{{old('message')}}"></textarea>
                                             </div>
                                         </div>
                                         <div class="col-lg-12 text-right">
-                                            <button type="submit" class="btn btn-lg btn-primary mb-5">Send</button>
+                                            <button id="btnSend" type="submit" class="btn btn-lg btn-primary mb-5">Send</button>
                                         </div>
                                     </div>
                                 </form>

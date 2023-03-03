@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Models\Contact;
 use Mail;
 use App\Mail\ContactSent;
+use Illuminate\Support\Facades\Validator;
 class ContactController extends Controller
 {
     /**
@@ -34,7 +35,7 @@ class ContactController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    /*public function store(Request $request)
     {
         $request->validate([
             'fullname' => 'required',
@@ -55,7 +56,35 @@ class ContactController extends Controller
             Mail::to($request->input('email'))->send(new ContactSent($data));
             return redirect()->route('contact.index')->with('success', 'You message has been sent.');
     }
+    */
+    public function store(Request $request)
+    {
+        if ($request->isMethod('post'))
+        {
+            $validator = Validator::make($request->all(), [
+                'fullName'   => 'required|max:50',
+                'email'   => 'required|email|max:50',
+                'message' => 'required|max:500',
+            ]);
+           
+            if ($validator->fails()) {
+                return response()->json($validator->messages()->toArray(), 400);
+            }
+   
+            $contact = new Contact();
+            $contact->fullname = $request->input('fullName');
+            $contact->email = $request->input('email');
+            $contact->message = $request->input('message');
+            $data=new \stdClass();
+            $data->mess=$request->message;
+            Mail::to($request->input('email'))->send(new ContactSent($data));
+            $contact->save();
+            return response()->json(["message"=>"Contact message sent successfully."]);
+        }
 
+
+
+    }
     /**
      * Display the specified resource.
      *

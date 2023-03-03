@@ -31,6 +31,7 @@ Route::get('/shop', [SiteController::class,'shop'])->name('shop');
 Route::get('/products', [SiteController::class,'products'])->name('products');
 Route::get('/details/{id}', [SiteController::class,'details'])->name('details');
 Route::resource('contact', ContactController::class);
+Route::post('submitContact', [ContactController::class,'store']);
 Route::resource('comment', CommentController::class);
 Route::get('/faq', [SiteController::class,'faqPage']);
 Route::get('/', [SiteController::class,'landingPage']);

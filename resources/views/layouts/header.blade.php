@@ -1,3 +1,4 @@
+@yield('head_meta')
 <!DOCTYPE html>
 <html>
 <head>
