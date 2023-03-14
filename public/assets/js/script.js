@@ -1,4 +1,20 @@
 $(document).ready(function(){
+    $('#myTable').DataTable({
+        ajax: '/dt/contacts',
+        destroy: true,
+        columns: [
+            { data: 'id' },
+            { data: 'fullname' },
+            { data: 'email' },
+            { data: 'message' },
+        ],
+        columnDefs: [ {
+            targets: 3,
+            render: function ( data, type, row ) {
+                return data.substr( 0, 10 ) + '...';
+            }
+        } ]
+    });
     $('#btnSend').click(function(event){
         event.preventDefault();
         var formData = {
